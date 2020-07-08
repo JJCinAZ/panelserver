@@ -60,7 +60,7 @@ func main() {
 
 	ctxExiting, pgmTerminate = context.WithCancel(context.Background())
 	signalChannel := make(chan os.Signal, 2)
-	signal.Notify(signalChannel, os.Interrupt, syscall.SIGINT)
+	signal.Notify(signalChannel, os.Interrupt, syscall.SIGTERM)
 	go func() {
 		sig := <-signalChannel
 		switch sig {
